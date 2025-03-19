@@ -5,9 +5,10 @@ dir=~
 
 source $dir/.bashrc
 cd $dir/ros2_ws
+rm -rf $dir/ros2_ws/src/ros2 $dir/ros2_ws/src/ros2-rust
+vcs import src < src/ros2_rust/ros2_rust_humble.repos
 colcon build
 source $dir/.bashrc
-source $dir/ros2_ws/install/setup.bash
 
 cd $dir/ros2_ws/src/ogm_flow_estimator_static
 
