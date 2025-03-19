@@ -7,6 +7,7 @@ source $dir/.bashrc
 cd $dir/ros2_ws
 colcon build
 source $dir/.bashrc
+source $dir/ros2_ws/install/setup.bash
 
 cd $dir/ros2_ws/src/ogm_flow_estimator_static
 
