@@ -45,12 +45,12 @@ impl FlowEstimatorNode {
         let data = Arc::new(Mutex::new(None));
         
         let flow_estimator_node = Arc::new(FlowEstimatorNode {
-            node,
+            node: node.into(),
             _sub_scan: None.into(),
             data,
-            scan_map,
-            static_obstacle_map,
-            obstacle_motion,
+            scan_map: scan_map.into(),
+            static_obstacle_map: static_obstacle_map.into(),
+            obstacle_motion: obstacle_motion.into(),
         });
         
         let data_cb = Arc::clone(&flow_estimator_node.data);
@@ -59,7 +59,7 @@ impl FlowEstimatorNode {
                 *data_cb.lock().unwrap() = Some(msg); 
             })?;
         
-        *flow_estimator_node._sub_scan.lock().unwrap() = Some(subscription);
+        *flow_estimator_node._sub_scan.lock().unwrap() = Some(subscription.into());
         
         Ok(flow_estimator_node)
     }
